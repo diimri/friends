@@ -8,3 +8,14 @@ Now we are having  model , view and controller of it created .
 model helps to map the relation (in broader term)
 controller lets me control the functions of the attributes such as Visibility(backend)
 Then the views shows us what a user sees (frontend)
+
+
+**Controller**
+Here most of the work is in Friends controller which is responsible for all the CRUD operations.
+
+
+**Model**
+here the mapping is done between the users and friends
+
+**View**
+This is responsible to show us the interface
