@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
 
   has_many :friends #, -> { where processed: true }
+  has_many :posts
 
 end
 
