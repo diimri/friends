@@ -26,6 +26,8 @@ gem 'devise', '~> 4.8'
 gem 'cancancan', '~> 3.3'
 #INSTALLED FORAUTHORISATION
 
+
+
 gem 'activeadmin', '~> 2.9'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
