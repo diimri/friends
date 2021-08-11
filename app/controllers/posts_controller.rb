@@ -8,6 +8,8 @@ class PostsController < InheritedResources::Base
   # GET /friends/1 or /friends/1.json
   def show
     # GET /friends/1 or /friends/1.json
+    @post = Post.find(params[:id])
+    
   end
 
   # GET /friends/new
@@ -19,29 +21,11 @@ class PostsController < InheritedResources::Base
   def edit
   end
 
-  # POST /friends or /friends.json
-
-  # def create
-  #   #byebug
-  #   #@post = Post.new(post_params)
-  #   @post=Post.find_or_create_by(post_params)
-   
-
-  #   respond_to do |format|
-  #     if @post.save
-  #       format.html { redirect_to @post, notice: "post was successfully created." }
-  #       format.json { render :show, status: :created, location: @post }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @post.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-  #@post = respond_with Post.create(post_params.merge(user_id: current_user.id))
+ 
 
   def create
-    @post = Post.new(post_params.merge(user_id: current_user.id))#created a new object @post of class  Post(P capital in class)
-    #@post = current_user.posts.new(post_params)
+    #@post = Post.new(post_params.merge(user_id: current_user.id))#created a new object @post of class  Post(P capital in class)
+    @post = current_user.posts.new(post_params)
     if @post.save
       redirect_to @post, notice: 'Thanks for your comment'
     else
@@ -66,14 +50,7 @@ class PostsController < InheritedResources::Base
     
   # end
 
-  # DELETE /friends/1 or /friends/1.json
-  # def destroy
-  #   @post.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to friends_url, notice: "post was successfully destroyed." }
-  #     format.json { head :no_content }
-  #   end
-  # end
+
 
   def destroy
     @post  = Post.find(params[:id])
@@ -88,14 +65,14 @@ class PostsController < InheritedResources::Base
   end
 
 
-  private
+  #private
 
     def set_post
       @post = Post.find(params[:id])
     end
 
     def post_params
-      params.require(:post).permit(:title, :time, :body,:user_id)
+      params.require(:post).permit(:title, :time, :body)
     end
 
 end

@@ -79,3 +79,7 @@ class FriendsController < ApplicationController
     end
   
 end
+
+
+
+#<%= @post.time %>

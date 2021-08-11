@@ -2,18 +2,17 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @post.title %>
+  <%= @posts.title %>
 </p>
 
 <p>
   <strong>Time:</strong>
-  <%= @post.time %>
+  @post.try(:time)
 </p>
 
 <p>
   <strong>Body:</strong>
-  <%= @post.body %>
+  @post.try(:body)
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post),class:"btn btn-secondary" %> |
-<%= link_to 'Back', posts_path %>
+
