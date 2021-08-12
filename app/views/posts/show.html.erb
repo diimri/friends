@@ -13,8 +13,10 @@
 <p>
   <strong>Time:</strong>
  <%= @post.time %>
-
 </p>
+
+
+<%= link_to "fav_text",fav_update_path(post:@post),id:'fav_link',remote:true%>
 
 <p>
   <strong>Body:</strong>

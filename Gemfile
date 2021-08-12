@@ -25,6 +25,8 @@ gem 'devise', '~> 4.8'
 #INSTALLED FOR USER PAGE
 gem 'cancancan', '~> 3.3'
 #INSTALLED FORAUTHORISATION
+gem 'jquery-rails', '~> 4.4'
+
 
 
 

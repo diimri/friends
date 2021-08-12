@@ -9,6 +9,7 @@ class PostsController < InheritedResources::Base
   def show
     # GET /friends/1 or /friends/1.json
     @post = Post.find(params[:id])
+    @fav_exists =Fav.where(post: @post, user:current_user)==[] ?false:true
     
   end
 

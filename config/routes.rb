@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'fav/update'
   resources :comments
   resources :posts
   root 'posts#index'

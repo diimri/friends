@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
-
+<h1>Football STARZ!</h1>
+<h1>Your favorite footballers</h1>
+<%current_user.favs.each do |fav|%>
+You favorited this post: <%=link_to fav.post.title,fav.post%>
+<%end%>
 <table>
   <thead>
     <tr>
@@ -20,7 +23,6 @@
       <tr>
         <td><%= link_to post.title,post ,class: "btn btn-dark btn-sm"%></td>
         <td><%= post.body %></td>
-          <br>
         <td><%= post.time %></td>
         <% if user_signed_in? %>
         
