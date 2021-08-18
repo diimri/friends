@@ -9,7 +9,8 @@ class PostsController < InheritedResources::Base
   def show
     # GET /friends/1 or /friends/1.json
     @post = Post.find(params[:id])
-    @fav_exists =Fav.where(post: @post, user:current_user)==[] ?false:true
+    @fav_exists =Fav.where(post: @post, user:current_user)==[] ? false : true
+  
     
   end
 
@@ -33,6 +34,11 @@ class PostsController < InheritedResources::Base
       redirect_to @post, notice: 'Unable to add post'
     end
   end
+
+#there are multiple way to associate user with post
+# @post.user_id = current_user.id
+# @post.user = current_user
+# @post = current_user.posts.build(params...)
 
   # def as_json(options = {})
   #   super(options.merge(include: :user))

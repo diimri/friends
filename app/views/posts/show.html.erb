@@ -16,12 +16,14 @@
 </p>
 
 
-<%= link_to "fav_text",fav_update_path(post:@post),id:'fav_link',remote:true%>
+<%= link_to "Favorite",fav_update_path(post:@post),id:'fav_link',remote:true%>
 
 <p>
   <strong>Body:</strong>
   <%=@post.body%>
 </p>
 
-<a  href="http://127.0.0.1:3000/comments/new"> Comments </a>
+<%= link_to 'Comments', new_post_comment_path(@post, @comment) %>
+
+
 

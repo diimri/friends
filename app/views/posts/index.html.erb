@@ -1,10 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Football STARZ!</h1>
-<h1>Your favorite footballers</h1>
-<%current_user.favs.each do |fav|%>
-You favorited this post: <%=link_to fav.post.title,fav.post%>
-<%end%>
+
+
 <table>
   <thead>
     <tr>
@@ -24,9 +22,10 @@ You favorited this post: <%=link_to fav.post.title,fav.post%>
         <td><%= link_to post.title,post ,class: "btn btn-dark btn-sm"%></td>
         <td><%= post.body %></td>
         <td><%= post.time %></td>
+
+
+        
         <% if user_signed_in? %>
-        
-        
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm" %></td>
         <%end%>
       </tr>

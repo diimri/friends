@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'fav/update'
-  resources :comments
-  resources :posts
+  resources :posts do resources :comments end 
   root 'posts#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
