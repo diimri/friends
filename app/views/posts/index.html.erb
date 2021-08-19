@@ -1,40 +1,54 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Football STARZ!</h1>
 
 
+
+ 
+<!-- <style>
+/* this is background photo messi */
+body {
+  background-image: url("https://64.media.tumblr.com/2671197d8465b60d131d17e4764d774d/tumblr_ngfjxnwzY41tevhfro1_1280.png");
+}
+</style>
+ -->
+<style>
+/* this is background photo messi */
+body {
+  background-image: url("https://64.media.tumblr.com/2671197d8465b60d131d17e4764d774d/tumblr_ngfjxnwzY41tevhfro1_1280.png");
+}
+</style>
+
+<img src="https://media2.giphy.com/media/9Px0QByMr537OyhCav/giphy.gif?cid=790b7611351e3fc1d4c3fa0cc91594f124405ea009f73fdf&rid=giphy.gif&ct=g">
+
+<br><br><br><br>
+<% if user_signed_in? %>
+
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <br>
-      
-      <th>remarkss</th>
-       <th>Created At</th>
-
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= link_to post.title,post ,class: "btn btn-dark btn-sm"%></td>
-        <td><%= post.body %></td>
-        <td><%= post.time %></td>
-
-
-        
-        <% if user_signed_in? %>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm" %></td>
-        <%end%>
+        <td><%= link_to post.title,post , class: "btn btn-info btn-sm"%></td>
       </tr>
     <% end %>
   </tbody>
-  <br>
-</table>
+  </table>
 
-<br>
-<% if user_signed_in? %>
-<%= link_to 'New Post', new_post_path %>
+
+
+<button class="btn btn-outline-success" type="submit">
+<%= link_to 'New Post', new_post_path  %>
+</button>
 <%end%>
+
+
+
+
+
+
+
+
+
+
+
+

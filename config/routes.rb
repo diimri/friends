@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  resources :comments
+  get 'comments/create'
   get 'fav/update'
+  #resources:posts
+   # resources :posts 
+   #   post 'comments', to:'comments#create'    
   resources :posts do resources :comments end 
   root 'posts#index'
   devise_for :admin_users, ActiveAdmin::Devise.config

@@ -5,12 +5,19 @@ class PostsController < InheritedResources::Base
     @posts = Post.all
   end
 
+
+  def home
+  end
+
+
+
   # GET /friends/1 or /friends/1.json
   def show
     # GET /friends/1 or /friends/1.json
     @post = Post.find(params[:id])
     @fav_exists =Fav.where(post: @post, user:current_user)==[] ? false : true
-  
+    @comment=Comment.new
+    @comments = @post.comments
     
   end
 
@@ -29,7 +36,7 @@ class PostsController < InheritedResources::Base
     #@post = Post.new(post_params.merge(user_id: current_user.id))#created a new object @post of class  Post(P capital in class)
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to @post, notice: 'Thanks for your comment'
+      redirect_to @post, notice: 'Post Added!'
     else
       redirect_to @post, notice: 'Unable to add post'
     end

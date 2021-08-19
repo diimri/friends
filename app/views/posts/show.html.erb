@@ -1,29 +1,58 @@
-<p id="notice"><%= notice %></p>
 
 
 
-<div style="width:400px;height:auto">
+<style>
+body {background-color: royalblue;}
+h1   {color: blue;}
+p    {color: black;}
+</style>
+
+
+
+
+<div>
 <%= image_tag (@post.image)%>
 </div>
+
+
+<br>
+
+
 <p>
-  <strong>Title:</strong>
+  <button type="button" class="btn btn-warning" >
   <%= @post.title %>
-</p>
-
-<p>
-  <strong>Time:</strong>
- <%= @post.time %>
+  </button>
 </p>
 
 
+
+<button type="button" class="btn btn-success">
 <%= link_to "Favorite",fav_update_path(post:@post),id:'fav_link',remote:true%>
+</button>
+<br><br>
 
 <p>
   <strong>Body:</strong>
   <%=@post.body%>
 </p>
 
-<%= link_to 'Comments', new_post_comment_path(@post, @comment) %>
 
 
 
+
+<%= form_with model: [@post,@comment] do |f| %>
+<%= f.text_field :body %>
+<%= f.submit "Comment" %>
+<% end %>
+
+<% @comments.each do |c| %>
+<% c.body %>
+<% end %>
+
+<br><br>
+
+
+
+<% if user_signed_in? %>
+        <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm" %></td>
+        <%end%>
