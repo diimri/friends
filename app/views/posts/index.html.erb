@@ -1,54 +1,73 @@
 
 
-<h1>Football STARZ!</h1>
+<h3>  <%= link_to 'New Post', new_post_path ,class: "btn btn btn-outline-secondary" %> </h3>
 
 
 
- 
+<% @posts.each do |post| %>
+<P align=right>BY <%= post.user.email %></P>
+
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+
+    
+
+    <div class="col-6 px-100">
+      <h1 class="display-4 fst-italic"><%= post.title %> 
+
+       <!-- the fav code -->
+       <% if user_signed_in? %>
+        <% current_user.favs.each do |fav| %>
+          <% if fav.post.title == post.title %>
+          <span class="fa fa-star checked"></span>
+          <%end%>
+        <% end %> 
+        <% end %>
+
+      </h1>
+
+
+
+
+
+
+
+      <p class="lead my-1"><%= post.body[0..300] %></p>
+      <p class="lead mb-0"><%= link_to "continue To read...",post %><a href="" class="text-white fw-bold"></a></p>
+
+    </div>
+  </div>
+<% end %>
+
+
+
+<footer class="blog-footer">
+  <p>Site Built by Divyansh Dimri <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+  <p>
+    <a href="#">Back to top</a>
+  </p>
+</footer>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-/* this is background photo messi */
-body {
-  background-image: url("https://64.media.tumblr.com/2671197d8465b60d131d17e4764d774d/tumblr_ngfjxnwzY41tevhfro1_1280.png");
+.checked {
+  color: orange;
 }
 </style>
-
-
-
-<!-- <img s rc="https://media2.giphy.com/media/9Px0QByMr537OyhCav/giphy.gif?cid=790b7611351e3fc1d4c3fa0cc91594f124405ea009f73fdf&rid=giphy.gif&ct=g">-->
-
-<br><br><br><br>
-<% if user_signed_in? %>
-
-<table>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td>  <%= link_to post.title,post , class: "btn btn-info btn-sm"%> 
-         </td>
-        
-
-      </tr>
-
-    <% end %>
-
-  </tbody>
-  </table>
-
-
-
-<button class="btn btn-outline-success" type="submit">
-<%= link_to 'New Post', new_post_path  %>
-</button>
-<%end%>
+</head>
+<body>
 
 
 
 
 
-
-
-
-
-
-
-
+<style>
+body {
+  background-image: url('https://wallpapercave.com/wp/wp6568669.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>

@@ -1,14 +1,17 @@
 class FavController < ApplicationController
   def update
+    @favs = Fav.all
     fav=Fav.where(post: Post.find(params[:post]),user:current_user)
     if fav==[]
       #create new fav
       Fav.create(post: Post.find(params[:post]),user:current_user)
       @fav_exists = true
+      
     else
       #delete fav
       fav.destroy_all
       @fav_exists= false
+      
     end
     respond_to do |format|
       format.html {}
@@ -25,3 +28,11 @@ end
 # <% current_user.favs.each do |fav| %>
 # <%= link_to fav.post.title,fav.post %>
 # <% end %>
+
+
+
+ # <% current_user.favs.each do |fav| %>
+ #          <% if fav.post.title == post.title %>
+ #          <span class="fa fa-star checked"></span>
+ #          <%end%>
+ #        <% end %>

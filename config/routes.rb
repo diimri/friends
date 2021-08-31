@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :comments
   get 'comments/create'
   get 'fav/update'
+  get 'users/show'
+  #resources 'users'
   #resources:posts
    # resources :posts 
    #   post 'comments', to:'comments#create'    

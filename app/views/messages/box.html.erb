@@ -1,7 +1,7 @@
 <div class="jumbtron">
 	<h1 style="text-align:center">ChatWithMe</h1>
 			
-	<div class='well' id="chatbox" style="height:250px; border: solid 1px #222222;overflow-y:scroll" >
+	<div class='well' id="chatbox" style="height:250px; border: solid 1px #222222;overflow-y:scroll;" >
   <% @messages.each do |message| %>
 
        <%= render 'messages/message', message: message %>
@@ -9,14 +9,28 @@
     <% end %>
 
 	</div>
+
 	<%= form_with model: [@message] do |f| %>
 	<div class="input-group mb-3">
 		<%= f.text_field :body , placeholder: "say something......", class: 'form-control'  %>
 		<div class="input-group-append">
-			<%= f.submit "Send", class: "btn btn-secondary" %>
+			<%= f.submit "Send", class: "btn btn-primary" %>
 		</div>
 	</div>
 	<% end %>
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+ 

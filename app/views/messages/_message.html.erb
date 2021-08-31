@@ -1,6 +1,17 @@
 <div class = "well">
-	[<%= message.created_at.strftime("%I:%M %P") %>]  :
-	<%= message.body %>
+	
+
+
+	 <% @messages.each do |m| %>
+     <div id="wrapper">
+<% if m.user.email == current_user.email %>
+<button type="button" class="btn-sm btn-danger">you</button>
+ <%=  m.body %>
+<% else %>
+ <p align="right"> <%=  m.body %> <button type="button" class="btn btn-warning"></button> </p>
+    <% end %>
+     </div><% end %>
+
 </div>
 
 

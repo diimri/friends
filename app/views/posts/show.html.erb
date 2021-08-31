@@ -1,72 +1,91 @@
-
-
-
-<style>
-body {background-color: royalblue;}
-h1   {color: blue;}
-p    {color: black;}
-</style>
-
-
-
-
+<main class="container">
 <div>
-<%= image_tag @post.image %>
+<%= image_tag (@post.image)%>
 </div>
 
+<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <!-- <div class="col-md-6 px-0"> -->
 
-<br>
-
-
-<p>
-  <strong>
-  <%= @post.title %>
-  by
-  <% if current_user != User.find(@post.user_id) %>
-  <%= link_to User.find(@post.user_id).email ,messages_box_path %>
-  <% else %>
-  You
-  <% end %> 
-</strong>
-</p>
+      
+post By
+       <a class="btn btn btn-outline-primary" href="http://127.0.0.1:3000/users/show"><%= @post.user.email%></a>
 
 
 
-<button type="button" class="btn btn-success">
-<%= link_to "Favorite",fav_update_path(post:@post),id:'fav_link',remote:true%>
-</button>
-<br><br>
+      <h1 class="display-4 fst-italic"><%= @post.title  %> 
+        <% current_user.favs.each do |fav| %>
+          <% if fav.post.title == @post.title %>
+          <span class="fa fa-star checked"></span>
+          <%end%>
+        <% end %>
+      </h1>
 
-<p>
 
-  <%=@post.body%>
-</p>
 
-<strong>
+<h6 class="btn btn-sm btn-outline-secondary"><%= link_to " favourite",fav_update_path(post:@post),id:'fav_link',remote:true  %>     </h6>
+
+
+
+       
+
+      
+
+
+      
+
+
+      <p class="lead my-3"><%=@post.body%></p>
+
+      <strong>
 Comments:
 </strong>
-<% @post.comments.each do |comment| %>
-          <div class="comment-wrapper">
-            <%= comment.user.email %>:
-            <%=  comment.body %>
+
+<div class='well' id="chatbox" style="height:100px; border: solid 1px #22222;overflow-y:scroll" >
+  <% @post.comments.each do |comment| %>
+     <div id="wrapper">
+           <p> <%= comment.user.email %>:
+            <%=  comment.body %></p>
           </div>
-        <% end %>
 
+    <% end %>
 
-
+    </div>
 
 
 <%= form_with model: [@post,@comment] do |f| %>
 <%= f.text_field :body %>
 <%= f.submit "Comment" %>
 <% end %>
+<% @comments.each do |c| %>
+<% c.body %>
+<% end %>
 
+<br>
 
-
-<br><br>
-
-
-
-<% if user_signed_in? and current_user == User.find(@post.user_id) %>
+      <p class="lead mb-0"><a href="#" class="text-white fw-bold"><% if user_signed_in? %>
         <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm" %></td>
-<%end%>
+        <%end%></a></p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+<body>
+

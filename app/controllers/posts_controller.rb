@@ -1,5 +1,6 @@
 class PostsController < InheritedResources::Base
-  #before_action :correct_user , only: [:create,:edit , :update , :destroy]
+  before_action :correct_user , only: [:create,:edit , :update , :destroy]
+  before_action :authenticate_user!, :except => [:index]
 
   def index
     @posts = Post.all
@@ -30,6 +31,19 @@ class PostsController < InheritedResources::Base
   def edit
   end
 
+
+ def update
+    respond_to do |format|
+     if @post.update(post_params)
+     #if @friend.update(user_id)
+        format.html { redirect_to @post, notice: "Friend was successfully updated." }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @friend.errors, status: :unprocessable_entity }
+      end
+    end
+  end
  
 
   def create
@@ -91,3 +105,13 @@ class PostsController < InheritedResources::Base
 
 end
 
+
+
+# <!--     <main class="container">
+#     <div class="col-md-6 px-0">
+#       <h1 class="display-4 fst-italic"><%= link_to post.title,post , class: "btn  btn-sm btn-outline-primary"%></h1>
+#       <p class="lead my-3"><%= post.body[0..300] %></p>
+#       <p class="lead mb-0"><a href="#" class="text-white fw-bold"><%= link_to "Continue reading...",post %> </a></p>
+#     </div>
+#   </div>
+#  -->
