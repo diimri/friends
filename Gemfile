@@ -26,10 +26,15 @@ gem 'devise', '~> 4.8'
 gem 'cancancan', '~> 3.3'
 #INSTALLED FORAUTHORISATION
 gem 'jquery-rails', '~> 4.4'
+gem 'mini_magick', '~> 4.11'
 
 gem 'excon', '~> 0.85.0'
 gem 'httparty', '~> 0.18.1'
 
+gem 'bootstrap'
+gem 'popper_js'
+gem 'tether-rails'
+gem 'simple_form'
 
 gem 'activeadmin', '~> 2.9'
 # Use Active Storage variant

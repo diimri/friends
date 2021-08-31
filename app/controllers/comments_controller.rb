@@ -5,8 +5,13 @@ class CommentsController < InheritedResources::Base
     @post = Post.find(params[:post_id])
     @comment =@post.comments.new(comment_params)
     @comment.user= current_user
+
+    #   post.find.comments(new).user
+
+
+
     if @comment.save
-      redirect_to @post, notice: 'Thanks for your comment'
+      redirect_to @post, notice: 'comment added'
     else
       redirect_to @post, notice: 'Unable to add comment'
     end

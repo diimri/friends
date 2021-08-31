@@ -11,7 +11,7 @@ p    {color: black;}
 
 
 <div>
-<%= image_tag (@post.image)%>
+<%= image_tag @post.image %>
 </div>
 
 
@@ -19,9 +19,15 @@ p    {color: black;}
 
 
 <p>
-  <button type="button" class="btn btn-warning" >
+  <strong>
   <%= @post.title %>
-  </button>
+  by
+  <% if current_user != User.find(@post.user_id) %>
+  <%= link_to User.find(@post.user_id).email ,messages_box_path %>
+  <% else %>
+  You
+  <% end %> 
+</strong>
 </p>
 
 
@@ -32,9 +38,19 @@ p    {color: black;}
 <br><br>
 
 <p>
-  <strong>Body:</strong>
+
   <%=@post.body%>
 </p>
+
+<strong>
+Comments:
+</strong>
+<% @post.comments.each do |comment| %>
+          <div class="comment-wrapper">
+            <%= comment.user.email %>:
+            <%=  comment.body %>
+          </div>
+        <% end %>
 
 
 
@@ -45,14 +61,12 @@ p    {color: black;}
 <%= f.submit "Comment" %>
 <% end %>
 
-<% @comments.each do |c| %>
-<% c.body %>
-<% end %>
+
 
 <br><br>
 
 
 
-<% if user_signed_in? %>
+<% if user_signed_in? and current_user == User.find(@post.user_id) %>
         <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-sm" %></td>
-        <%end%>
+<%end%>

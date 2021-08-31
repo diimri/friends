@@ -1,2 +1,5 @@
 //=require jquery3
 //= require jquery_ujs
+//= require popper
+//= require activestorage
+//= require jqurey_ujs

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_130657) do
+ActiveRecord::Schema.define(version: 2021_08_19_104421) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -101,6 +101,14 @@ ActiveRecord::Schema.define(version: 2021_08_18_130657) do
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.datetime "time"
@@ -132,5 +140,6 @@ ActiveRecord::Schema.define(version: 2021_08_18_130657) do
   add_foreign_key "comments", "users"
   add_foreign_key "favs", "posts"
   add_foreign_key "favs", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
 end

@@ -10,5 +10,7 @@ end
 
 
 
-#<!--<% if friend.user == current_user %>>  
-# from idex.html
+
+
+
+
