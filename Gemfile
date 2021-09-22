@@ -25,7 +25,10 @@ gem 'devise', '~> 4.8'
 #INSTALLED FOR USER PAGE
 gem 'cancancan', '~> 3.3'
 #INSTALLED FORAUTHORISATION
+gem 'jquery-rails', '~> 4.4'
 
+gem 'excon', '~> 0.85.0'
+gem 'httparty', '~> 0.18.1'
 
 
 gem 'activeadmin', '~> 2.9'

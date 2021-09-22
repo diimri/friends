@@ -1,51 +1,51 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    
-    <a class="navbar-brand" href=" http://127.0.0.1:3000">Post Man!</a>
+    <a class="navbar-brand" href="#">BlogMe</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-     
-        <!--<li class="nav-item">
-          <a class="nav-link" href="http://127.0.0.1:3000/home/about"> About </a>
-        </li>
+        <% if user_signed_in? %>
 
-        
-        
-         link_to "About", home_about_path, class="nav-link" %>-->
-
+         
+</br>
        
-
-
-<% if user_signed_in? %>
-
-        <li class="nav-item">
+ <li class="nav-item">
+              <button class="btn btn-outline-success btn-sm" type="submit">
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </button>
         </li>  
         
 
         <li class="nav-item">
+          <button class="btn btn-outline-success btn-sm" type="submit">
           <a class="nav-link" href="http://127.0.0.1:3000/users/password/new"> change password </a>
+          </button>
         </li>
 
 
         <li class="nav-item">
+          <button class="btn btn-outline-success btn-sm btn-sm" type="submit">
           <a class="nav-link" href="http://127.0.0.1:3000/users/edit"> edit profile </a>
+          </button>
         </li>
 
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="http://127.0.0.1:3000/friends"> Friends </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="http://127.0.0.1:3000/friends/new"> add friends </a>
+        
+    <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Your Favourite 
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        
+          </ul>
         </li>
 
       <%else%>
+
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:3000/users/sign_in"> Posts </a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="http://127.0.0.1:3000/users/sign_in"> sign in </a>
@@ -55,10 +55,35 @@
           <a class="nav-link" href="http://127.0.0.1:3000/users/sign_up"> sign up </a>
         </li>
 
+        
 
-<% end %>
+
+
+
+      <% end %>
+
+
+
+<ul class="navbar-nav-right ">
+<button class="btn btn-outline-success  btn-sm" type="submit">
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:3000/admin"> ADMIN? </a>
+        </li>
+      </button>
+
+</ul>
 
         
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success  btn-sm" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+       
+
 
 
         
